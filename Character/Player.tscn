@@ -256,7 +256,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lsrga")
 hframes = 24
-frame = 13
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 5)
