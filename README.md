@@ -1,4 +1,4 @@
-## Escape the Museum: Curse of the Living Exhibits
+## Timeless Escape: Curse of the Living Exhibits
 Welcome to Escape the Museum: Curse of the Living Exhibits, a 2D pixel art escape room video game built in Godot where you play as a visitor trapped inside a museum after the exhibits come to life and start attacking! Your goal is to escape each exhibit room by solving puzzles and defeating enemies.
 
 Theme: Mystery
