@@ -15,6 +15,11 @@ run/main_scene="res://sandbox_senne.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[gui]
+
+theme/default_theme_scale=2.07
+theme/custom_font="res://The Wild Breath of Zelda.otf"
+
 [input]
 
 right={
