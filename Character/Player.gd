@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var dialogue = $Dialogue
 
 const MAX_SPEED = 100
+@onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
 
