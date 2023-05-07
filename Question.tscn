@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjctrysaqy4aj"]
+
+[ext_resource type="Texture2D" uid="uid://4w43lcvhpjcv" path="res://Assets/GUI.png" id="1_s65f5"]
+[ext_resource type="Script" path="res://Question.gd" id="1_ssv5x"]
+
+[sub_resource type="Theme" id="Theme_usjrf"]
+
+[node name="Question" type="CanvasLayer"]
+script = ExtResource("1_ssv5x")
+metadata/answer_correct_number = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.859
+anchor_right = 0.5
+anchor_bottom = 0.859
+offset_left = -312.0
+offset_top = 51.368
+offset_right = -267.0
+offset_bottom = 84.368
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(13.9555, 3.99412)
+pivot_offset = Vector2(19.9976, 45.1059)
+texture = ExtResource("1_s65f5")
+region_rect = Rect2(144, 80, 48, 16)
+patch_margin_top = 11
+patch_margin_right = 2
+patch_margin_bottom = 13
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.86
+anchor_right = 0.5
+anchor_bottom = 0.86
+offset_left = -433.0
+offset_top = -67.28
+offset_right = -24.0
+offset_bottom = 15.72
+text = " HELLO THERE MLADY"
+fit_content = true
+scroll_active = false
+scroll_following = true
+language = "en"
+
+[node name="One" type="Button" parent="."]
+offset_left = 630.0
+offset_top = 474.0
+offset_right = 870.0
+offset_bottom = 534.0
+theme = SubResource("Theme_usjrf")
+text = "One"
+
+[node name="Two" type="Button" parent="."]
+offset_left = 633.0
+offset_top = 544.0
+offset_right = 873.0
+offset_bottom = 604.0
+text = "Two"
+
+[node name="Three" type="Button" parent="."]
+offset_left = 881.0
+offset_top = 474.0
+offset_right = 1121.0
+offset_bottom = 534.0
+text = "Three"
+
+[node name="Four" type="Button" parent="."]
+offset_left = 880.0
+offset_top = 545.0
+offset_right = 1120.0
+offset_bottom = 605.0
+text = "Four
+"
+
+[connection signal="correct_answer" from="." to="." method="_on_correct_answer"]
+[connection signal="pressed" from="One" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="Two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="Three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="Four" to="." method="_on_four_pressed"]

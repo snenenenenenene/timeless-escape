@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chxrl2m51o58y"
-path="res://.godot/imported/Bob.png-d9da72044e46de4d76fa06d0f92b63f4.ctex"
+uid="uid://dk66atf5tncny"
+path="res://.godot/imported/Medieval.png-dce89b1e9152954c4a37826a6cfe7e7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Bob.png"
-dest_files=["res://.godot/imported/Bob.png-d9da72044e46de4d76fa06d0f92b63f4.ctex"]
+source_file="res://Assets/Characters/Medieval.png"
+dest_files=["res://.godot/imported/Medieval.png-dce89b1e9152954c4a37826a6cfe7e7c.ctex"]
 
 [params]
 

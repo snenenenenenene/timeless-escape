@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxjx4gfi45rh7"]
+[gd_scene load_steps=32 format=3 uid="uid://bgej6x2g305dn"]
 
 [ext_resource type="Script" path="res://Character/Player.gd" id="1_70rip"]
-[ext_resource type="Texture2D" uid="uid://dk66atf5tncny" path="res://Assets/Characters/Bob.png" id="2_evn01"]
+[ext_resource type="Texture2D" uid="uid://chxrl2m51o58y" path="res://Assets/Characters/Bob.png" id="2_evn01"]
 [ext_resource type="PackedScene" uid="uid://cc1fqg3nilv1b" path="res://Dialogue.tscn" id="3_8e8ac"]
+[ext_resource type="PackedScene" uid="uid://cjctrysaqy4aj" path="res://Question.tscn" id="4_kx1h3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqy20"]
 size = Vector2(11.5, 8)
@@ -252,8 +253,8 @@ size = Vector2(18, 31)
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
-collision_layer = 257
-collision_mask = 257
+collision_layer = 289
+collision_mask = 289
 script = ExtResource("1_70rip")
 starting_direction = Vector2(2.08165e-12, -0.1)
 
@@ -274,21 +275,23 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_q7y6b")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_8qulg")
 parameters/Idle/blend_position = Vector2(0.00275934, 0.00110495)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="ActionableFinder" type="Area2D" parent="."]
 z_index = 3
-collision_layer = 257
-collision_mask = 257
+collision_layer = 289
+collision_mask = 289
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
 position = Vector2(-1, 5.5)
 shape = SubResource("RectangleShape2D_2kig2")
 
 [node name="Dialogue" parent="." instance=ExtResource("3_8e8ac")]
+
+[node name="Question" parent="." instance=ExtResource("4_kx1h3")]
+visible = false
 
 [connection signal="area_entered" from="ActionableFinder" to="." method="_on_actionable_finder_area_entered"]
 [connection signal="area_exited" from="ActionableFinder" to="." method="_on_actionable_finder_area_exited"]
