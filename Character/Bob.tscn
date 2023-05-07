@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxjx4gfi45rh7"]
+[gd_scene load_steps=32 format=3 uid="uid://bgej6x2g305dn"]
 
 [ext_resource type="Texture2D" uid="uid://dk66atf5tncny" path="res://Assets/Characters/Bob.png" id="2_evn01"]
 [ext_resource type="PackedScene" uid="uid://cc1fqg3nilv1b" path="res://Dialogue.tscn" id="3_8e8ac"]
+[ext_resource type="PackedScene" uid="uid://cjctrysaqy4aj" path="res://Question.tscn" id="4_kx1h3"]
 
 [sub_resource type="GDScript" id="GDScript_1sxu3"]
 script/source = "extends CharacterBody2D
@@ -16,12 +17,12 @@ const MAX_SPEED = 100
 func _ready():
 	dialogue.set(\"visible\", false)
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength(\"ui_right\") - Input.get_action_strength(\"ui_left\")
 	input_vector.y = Input.get_action_strength(\"ui_down\") - Input.get_action_strength(\"ui_up\")
 	input_vector = input_vector.normalized()
-	
+
 	if input_vector != Vector2.ZERO:
 		animationTree.set(\"parameters/Idle/blend_position\", input_vector)
 		animationTree.set(\"parameters/Walk/blend_position\", input_vector)
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	else:
 		animationState.travel(\"Idle\")
 		velocity = Vector2.ZERO
-	
+
 	print(\"FINISH: %s\" % velocity)
 	move_and_slide()
 
@@ -319,14 +320,17 @@ parameters/Walk/blend_position = Vector2(-0.02582, 0.25)
 [node name="ActionableFinder" type="Area2D" parent="."]
 visible = false
 z_index = 3
-collision_layer = 257
-collision_mask = 257
+collision_layer = 289
+collision_mask = 289
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_2kig2")
 
 [node name="Dialogue" parent="." instance=ExtResource("3_8e8ac")]
+
+[node name="Question" parent="." instance=ExtResource("4_kx1h3")]
+visible = false
 
 [connection signal="area_entered" from="ActionableFinder" to="." method="_on_actionable_finder_area_entered"]
 [connection signal="area_exited" from="ActionableFinder" to="." method="_on_actionable_finder_area_exited"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://o4bvs3ei2ra8"]
+
+[ext_resource type="Script" path="res://Menu/game_over.gd" id="1_mhlrj"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mhlrj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 417.0
+offset_top = 238.0
+offset_right = 925.0
+offset_bottom = 338.0
+theme_override_font_sizes/normal_font_size = 100
+text = "GAME OVER"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1223.0
+offset_bottom = 672.0
+color = Color(0.145098, 0.239216, 0.0588235, 1)
+
+[node name="GoToMenu" type="Button" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 409.0
+offset_top = 377.0
+offset_right = 906.56
+offset_bottom = 498.56
+theme_override_font_sizes/font_size = 100
+text = "GO TO MENU"
+
+[connection signal="pressed" from="GoToMenu" to="." method="_on_go_to_menu_pressed"]

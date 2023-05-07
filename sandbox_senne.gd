@@ -1,10 +1,8 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	var tile_map = $TileMap
-	var flash_light = $CharacterBody2D/PointLight2D
+	var flash_light = $Player/PointLight2D
 	var canvas_modulate = $CanvasModulate
 	tile_map.set("layer_0/modulate", "#a1a1a1")
 	tile_map.set("layer_1/modulate", "#ffffff")
@@ -16,10 +14,3 @@ func _ready():
 	flash_light.set("enabled", true)
 	flash_light.set("texture_scale", 0.4)
 	flash_light.set("color", "#FFFFFF")
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
