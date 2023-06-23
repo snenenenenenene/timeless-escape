@@ -1,42 +1,33 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 100
-@export var starting_direction : Vector2 = Vector2(0,-0.1)
-
 @onready var dialogue = $Dialogue
+
+const MAX_SPEED = 100
+@onready var animationPlayer = $AnimationPlayer
+@onready var animationTree = $AnimationTree
+@onready var animationState = animationTree.get("parameters/playback")
+
 @onready var question = $Question
-@onready var animation_tree = $AnimationTree
-@onready var state_machine = animation_tree.get("parameters/playback")
 
 func _ready():
 	dialogue.set("visible", false)
-	update_animation_parameters(starting_direction)
 
-func _physics_process(_delta):
-	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
+func _physics_process(delta):	
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	input_vector = input_vector.normalized()
 	
-	update_animation_parameters(input_direction)
-	
-	velocity = input_direction * move_speed
+	if input_vector != Vector2.ZERO:
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Walk/blend_position", input_vector)
+		animationState.travel("Walk")
+		velocity = input_vector * MAX_SPEED
+	else:
+		animationState.travel("Idle")
+		velocity = Vector2.ZERO
 	
 	move_and_slide()
-	
-	pick_new_state()
-
-func update_animation_parameters(move_input : Vector2):
-	if(move_input != Vector2.ZERO):
-		animation_tree.set("parameters/Walk/blend_position", move_input)
-		animation_tree.set("parameters/Idle/blend_position", move_input)
-
-func pick_new_state():
-	if(velocity != Vector2.ZERO):
-		state_machine.travel("Walk")
-	else:
-		state_machine.travel("Idle")
-
 
 func _on_actionable_finder_area_entered(area):
 	match area.name:
@@ -69,7 +60,7 @@ func _on_actionable_finder_area_entered(area):
 			var answerFour = area.get("metadata/answer_four_value")
 			var answerFourField = $Question/Four
 			answerFourField.set("text", answerFour)
-			
+
 			question.set("visible", true)
 		"GoToEntrance":
 			print("Go back whence you came!")

@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Timeless Escape"
-run/main_scene="res://sandbox_senne.tscn"
+run/main_scene="res://Menu/Menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [gui]
